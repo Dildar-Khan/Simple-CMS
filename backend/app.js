@@ -8,9 +8,7 @@ const createPostRoutes = require('./routes/posts');
 const userRoutes = require('./routes/user');
 
 const mongoDBUrl =
-  'mongodb+srv://Dildar:' +
-  process.env.MONGO_ATLAS_PW +
-  '@cluster0-vthcd.mongodb.net/CMS-Database?retryWrites=true&w=majority';
+  'mongodb+srv://Dildar:khan@cluster0-vthcd.mongodb.net/CMS-Database?retryWrites=true&w=majority';
 
 const app = express();
 
