@@ -1,0 +1,14 @@
+h2 {
+  color: blue;
+  text-align: center;
+  text-decoration-line: underline;
+}
+mat-card {
+  width: 50%;
+  margin: auto;
+  margin-top: 3rem;
+}
+mat-form-field {
+  width: 100%;
+  color: black;
+}

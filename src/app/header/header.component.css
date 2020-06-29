@@ -1,0 +1,19 @@
+mat-toolbar {
+  background-color: darkolivegreen;
+  color: white;
+}
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+a {
+  text-decoration: underline;
+  color: white;
+}
+ul {
+  display: flex;
+}
+.spacer {
+  flex: 1 1 auto;
+}
