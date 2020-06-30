@@ -1,22 +1,30 @@
-<h1>Just Started LOL!</h1>
+<h1>Simple CMS!</h1>
 <mat-accordion multi="true" *ngIf="posts.length > 0">
   <mat-expansion-panel *ngFor="let post of posts">
     <mat-expansion-panel-header>
-     <label>Post Title: </label> {{post.postTitle}}
+      <label>Post Title: </label> {{ post.postTitle }}
     </mat-expansion-panel-header>
-    <p><label>Post Status: </label>{{post.postStatus}}</p>
+    <p><label>Post Status: </label>{{ post.postStatus }}</p>
     <!-- <p><label>Allow Comments: </label>{{post.allowComments}}</p> -->
-    <p><label>Post Description: </label>{{post.postDescription}}</p>
+    <p><label>Post Description: </label>{{ post.postDescription }}</p>
     <div class="post-image">
-      <img [src]="post.imagePath" [alt]="post.postTitle">
+      <img [src]="post.imagePath" [alt]="post.postTitle" />
     </div>
     <mat-action-row *ngIf="userIsAuthenticated && userId === post.creator">
-      <a mat-button color="primary" [routerLink] ="['/edit', post.id]">EDIT</a>
-      <button mat-button color="warn" (click)="onDelete(post.id)">DELETE</button>
+      <a mat-button color="primary" [routerLink]="['/edit', post.id]">EDIT</a>
+      <button mat-button color="warn" (click)="onDelete(post.id)">
+        DELETE
+      </button>
     </mat-action-row>
   </mat-expansion-panel>
 </mat-accordion>
-<mat-paginator [length]="totalPosts" [pageSize]="postsPerPage" [pageSizeOptions]="pageSizeOptions" (page)="onChangedPage($event)">
-
+<mat-paginator
+  [length]="totalPosts"
+  [pageSize]="postsPerPage"
+  [pageSizeOptions]="pageSizeOptions"
+  (page)="onChangedPage($event)"
+>
 </mat-paginator>
-<p class="info-text mat-body-1" *ngIf="posts.length <=0">No posts added yet!</p>
+<p class="info-text mat-body-1" *ngIf="posts.length <= 0">
+  No posts added yet!
+</p>

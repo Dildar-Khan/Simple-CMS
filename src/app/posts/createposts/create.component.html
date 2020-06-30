@@ -1,54 +1,78 @@
 <mat-card>
-    <h2>New Post</h2>
-<form [formGroup]="form" (submit)="onCreatPost()">
-<mat-form-field>
-<input matInput type="text" formControlName="postTitle" placeholder="Please add Post title">
-<mat-error *ngIf="form.get('postTitle').invalid">please enter to continue!</mat-error>
-</mat-form-field>
-<mat-form-field>
-  <mat-select formControlName="postStatus" placeholder="Please select status">
-    <mat-option value="public">Public</mat-option>
-    <mat-option value="private">Private</mat-option>
-    <mat-option value="draft">Draft</mat-option>
-    <!-- <mat-option *ngFor="" value="">
+  <form [formGroup]="form" (submit)="onCreatPost()">
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        formControlName="postTitle"
+        placeholder="Please add Post title"
+      />
+      <mat-error *ngIf="form.get('postTitle').invalid"
+        >please enter to continue!</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select
+        formControlName="postStatus"
+        placeholder="Please select status"
+      >
+        <mat-option value="public">Public</mat-option>
+        <mat-option value="private">Private</mat-option>
+        <mat-option value="draft">Draft</mat-option>
+        <!-- <mat-option *ngFor="" value="">
     </mat-option> -->
-  </mat-select>
-</mat-form-field>
-<div>
-  <button mat-stroked-button type="button" (click)="fileUpload.click()">Upload Image</button>
-  <input type="file" #fileUpload (change)="uploadImage($event)">
-</div>
-<div class="image-preview" *ngIf="imagePreview !== '' && imagePreview && form.get('image').valid">
-  <img [src]="imagePreview" [alt]="form.value.postTitle">
-</div>
-<!-- <mat-checkbox color="primary" formControlName="allowComments">
+      </mat-select>
+    </mat-form-field>
+    <div>
+      <button mat-stroked-button type="button" (click)="fileUpload.click()">
+        Upload Image
+      </button>
+      <input type="file" #fileUpload (change)="uploadImage($event)" />
+    </div>
+    <div
+      class="image-preview"
+      *ngIf="imagePreview !== '' && imagePreview && form.get('image').valid"
+    >
+      <img [src]="imagePreview" [alt]="form.value.postTitle" />
+    </div>
+    <!-- <mat-checkbox color="primary" formControlName="allowComments">
 Allow Comments
 </mat-checkbox> -->
-<mat-form-field>
-  <textarea matInput type="text" formControlName="postDescription" rows="4" placeholder="Please add Post Description"></textarea>
-</mat-form-field>
-<button mat-raised-button color="primary" type="submit">Add Post</button>
-</form>
+    <mat-form-field>
+      <textarea
+        matInput
+        type="text"
+        formControlName="postDescription"
+        rows="4"
+        placeholder="Please add Post Description"
+      ></textarea>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">Save Post</button>
+  </form>
 </mat-card>
-<hr>
+<hr />
 <mat-accordion multi="true" *ngIf="posts.length > 0">
   <mat-expansion-panel *ngFor="let post of posts">
     <mat-expansion-panel-header>
-     <label>Post Title: </label> {{post.postTitle}}
+      <label>Post Title: </label> {{ post.postTitle }}
     </mat-expansion-panel-header>
-    <p><label>Post Status: </label>{{post.postStatus}}</p>
+    <p><label>Post Status: </label>{{ post.postStatus }}</p>
     <!-- <p><label>Allow Comments: </label>{{post.allowComments}}</p> -->
-    <p><label>Post Description: </label>{{post.postDescription}}</p>
+    <p><label>Post Description: </label>{{ post.postDescription }}</p>
     <div class="post-image">
-      <img [src]="post.imagePath" [alt]="post.postTitle">
+      <img [src]="post.imagePath" [alt]="post.postTitle" />
     </div>
     <mat-action-row>
-      <a mat-button color="primary" [routerLink] ="['/edit', post.id]">EDIT</a>
-      <button mat-button color="warn" (click)="onDelete(post.id)">DELETE</button>
+      <a mat-button color="primary" [routerLink]="['/edit', post.id]">EDIT</a>
+      <button mat-button color="warn" (click)="onDelete(post.id)">
+        DELETE
+      </button>
     </mat-action-row>
   </mat-expansion-panel>
 </mat-accordion>
-<p class="info-text mat-body-1" *ngIf="posts.length <=0">No posts added yet!</p>
+<p class="info-text mat-body-1" *ngIf="posts.length <= 0">
+  No posts added yet!
+</p>
 
 <!-- <mat-accordion>
   <mat-expansion-panel>
