@@ -8,6 +8,7 @@ const createPostRoutes = require('./routes/posts');
 const userRoutes = require('./routes/user');
 
 const mongoDBUrl =
+  process.env.MONGODB_URL ||
   'mongodb+srv://Dildar:khan@cluster0-vthcd.mongodb.net/CMS-Database?retryWrites=true&w=majority';
 
 const app = express();
